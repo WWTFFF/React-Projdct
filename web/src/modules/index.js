@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import productRecommend from "./productRecommend";
+import productRecommend from "./ProductRecommend";
 
 const rootReducer = combineReducers({
   productRecommend,
