@@ -3,6 +3,7 @@ import "@aws-amplify/ui-react/styles.css";
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { getProductRecommend } from "../../../modules/ProductRecommend";
 import Loading from "../../Common/Loading";
 import ProductItem from "./ProductItem";
@@ -60,7 +61,12 @@ const ProductRecommendComponent = () => {
         <Flex>
           {"recommendedProduct : " + recommendedProduct}
           {recommendProductDummy.map((product) => (
-            <ProductItem key={product.name} productData={product} />
+            <NavLink
+              to={"/product/" + product.name}
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <ProductItem key={product.name} productData={product} />
+            </NavLink>
           ))}
         </Flex>
       )}
