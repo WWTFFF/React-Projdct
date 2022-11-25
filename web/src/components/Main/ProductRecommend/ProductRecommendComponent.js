@@ -3,7 +3,7 @@ import "@aws-amplify/ui-react/styles.css";
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductRecommend } from "../../../modules/productRecommend";
+import { getProductRecommend } from "../../../modules/ProductRecommend";
 import Loading from "../../Common/Loading";
 import ProductItem from "./ProductItem";
 
