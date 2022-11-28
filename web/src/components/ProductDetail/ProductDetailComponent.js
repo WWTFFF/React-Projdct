@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Flex, Image, Text } from "@aws-amplify/ui-react";
+import { Flex, Image } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import ProductDetailBuyButton from "./ProductDetailBuyButton";
 import ProductDetailInformation from "./ProductDetailInformation";
 
-const ProductDetailComponent = () => {
+const ProductDetailComponent = ({ productName }) => {
   // TODO 해당 제품 로딩하는 메소드 작성할 것
 
   const dummyData = {
@@ -13,6 +13,7 @@ const ProductDetailComponent = () => {
     Price: 15500,
     Discount: 0.25,
   };
+
   return (
     <Flex direction="column">
       <Flex direction="row" justifyContent="center" columnGap="5rem">
