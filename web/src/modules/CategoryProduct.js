@@ -1,5 +1,4 @@
 import { getCategoryProductAPI } from "../api/CategoryProductAPI";
-import { DJANGO_URL } from "../templates/URLTemplate";
 
 const GET_CATEGORY_PRODUCT = "productCategory/GET_CATEGORY_PRODUCT"; // 카테고리 상품 목록
 const GET_CATEGORY_PRODUCT_SUCCESS =
@@ -41,11 +40,11 @@ const initialState = {
     GET_CATEGORY_PRODUCT: false,
   },
 
-  // 추천 상품
-  recommendedProduct: [],
+  // 카테고리 상품
+  categoryProduct: [],
 };
 
-function productCategory(state = initialState, action) {
+function categoryProduct(state = initialState, action) {
   switch (action.type) {
     case GET_CATEGORY_PRODUCT:
       console.log("GET_CATEGORY_PRODUCT");
@@ -63,7 +62,7 @@ function productCategory(state = initialState, action) {
 
       return {
         ...state,
-        recommendedProduct: [...action.payload.products],
+        categoryProduct: action.payload.result,
         loading: {
           ...state.loading,
           GET_CATEGORY_PRODUCT: false,
@@ -84,4 +83,4 @@ function productCategory(state = initialState, action) {
   }
 }
 
-export default productCategory;
+export default categoryProduct;
