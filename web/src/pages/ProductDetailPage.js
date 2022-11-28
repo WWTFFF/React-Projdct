@@ -12,8 +12,7 @@ const ProductDetailPage = () => {
   return (
     <Flex direction="column">
       <CategoryComponent />
-      <ProductDetailComponent />
-      {params.category}
+      <ProductDetailComponent productName={params.productName} />
       <FooterComponent />
     </Flex>
   );
