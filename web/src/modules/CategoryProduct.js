@@ -1,4 +1,5 @@
 import { getCategoryProductAPI } from "../api/CategoryProductAPI";
+import { API_GATE_WAY_URL } from "../templates/URLTemplate";
 
 const GET_CATEGORY_PRODUCT = "productCategory/GET_CATEGORY_PRODUCT"; // 카테고리 상품 목록
 const GET_CATEGORY_PRODUCT_SUCCESS =
@@ -11,28 +12,26 @@ const GET_CATEGORY_PRODUCT_FAILURE =
  * @param {string} category
  * @returns
  */
-export const getProductRecommend =
-  ({ category }) =>
-  async (dispatch) => {
-    dispatch({ type: GET_CATEGORY_PRODUCT }); // 요청 시작
+export const getCategoryProduct = (category) => async (dispatch) => {
+  dispatch({ type: GET_CATEGORY_PRODUCT }); // 요청 시작
 
-    try {
-      const response = await getCategoryProductAPI(category);
+  try {
+    const response = await getCategoryProductAPI(API_GATE_WAY_URL, category);
 
-      console.log(response.data);
+    console.log(response.data);
 
-      dispatch({
-        type: GET_CATEGORY_PRODUCT_SUCCESS,
-        payload: response.data,
-      });
-    } catch (e) {
-      dispatch({
-        type: GET_CATEGORY_PRODUCT_FAILURE,
-        payload: e,
-        error: true,
-      });
-    }
-  };
+    dispatch({
+      type: GET_CATEGORY_PRODUCT_SUCCESS,
+      payload: response.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: GET_CATEGORY_PRODUCT_FAILURE,
+      payload: e,
+      error: true,
+    });
+  }
+};
 
 const initialState = {
   // 로딩 상태
