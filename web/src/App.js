@@ -1,8 +1,8 @@
 // 페이지 이동 목적 모듈 import
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage";
+import CategoryProductPage from "./pages/CategoryProductPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
-import ProductListPage from "./pages/ProductListPage";
 import TestPage from "./pages/TestPage";
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/test" element={<TestPage />} />
         <Route path="/product/:productName" element={<ProductDetailPage />} />
-        <Route path="/product/:category" element={<ProductListPage />} />
+        <Route path="/category/:category" element={<CategoryProductPage />} />
       </Routes>
     </BrowserRouter>
   );
