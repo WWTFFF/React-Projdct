@@ -1,10 +1,11 @@
 import React from "react";
 // amplify ui
-import { Flex, Image, SearchField } from "@aws-amplify/ui-react";
+import { Flex, Image } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 
 import { CategoryDict } from "../../data/CategoryData";
 import { NavLink } from "react-router-dom";
+import SearchComponent from "./SearchComponent";
 
 const CategoryComponent = () => {
   return (
@@ -23,7 +24,7 @@ const CategoryComponent = () => {
             </Flex>
           </NavLink>
         </Flex>
-        <SearchField placeholder="검색어를 입력해주세요" />
+        <SearchComponent />
       </Flex>
       <Flex justifyContent="center" height="3rem" columnGap="5rem">
         {Object.keys(CategoryDict).map((menu) => (
