@@ -9,6 +9,7 @@ import Loading from "../Common/Loading";
 import { NavLink } from "react-router-dom";
 import ProductItem from "../Common/ProductItem";
 import { CategoryDict } from "../../data/CategoryData";
+import { getProductDetail } from "../../modules/ProductDetail";
 
 const CategoryProductComponent = ({ category }) => {
   // 카테고리 전처리
@@ -28,6 +29,22 @@ const CategoryProductComponent = ({ category }) => {
     dispatch(getCategoryProduct(category));
   }, [category]);
 
+  const onClick = (product) => {
+    // 데이터 추가
+    // const dummyData = {
+    //   ProductName: "[브룩클린688] 호주산 목초육 치마살 구이용 300g (냉장)",
+    //   Price: 15500,
+    //   Discount: 0.25,
+    // };
+    console.log(product);
+    const refinedProduct = {
+      img_url: product.img_url,
+      ProductName: product.ProductName,
+      Price: product.Amount,
+      Discount: 0,
+    };
+    dispatch(getProductDetail(refinedProduct));
+  };
   return (
     <Flex alignItems="center" direction="column">
       {loading ? (
@@ -36,12 +53,18 @@ const CategoryProductComponent = ({ category }) => {
         <Flex>
           {categoryProduct.map((product) => (
             <Flex key={product.ProductName}>
-              <NavLink
-                to={"/product/" + product.ProductName}
-                style={{ textDecoration: "none", color: "black" }}
+              <Flex
+                onClick={() => {
+                  onClick(product);
+                }}
               >
-                <ProductItem productData={product} />
-              </NavLink>
+                <NavLink
+                  to={"/product/" + product.ProductName}
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <ProductItem productData={product} />
+                </NavLink>
+              </Flex>
             </Flex>
           ))}
         </Flex>
