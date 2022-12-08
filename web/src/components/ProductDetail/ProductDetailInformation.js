@@ -2,24 +2,24 @@ import { Badge, Flex, Text } from "@aws-amplify/ui-react";
 import React from "react";
 import "@aws-amplify/ui-react/styles.css";
 
-const ProductDetailInformation = ({ dummyData }) => {
+const ProductDetailInformation = ({ product }) => {
   {
     /* 제목 */
   }
   return (
     <Flex direction="column">
-      <Text fontSize="1.5rem">{dummyData.ProductName}</Text>
+      <Text fontSize="1.5rem">{product.ProductName}</Text>
       {/* 가격 표시 */}
       <Flex direction="column" fontWeight="bold">
         <Flex fontSize="1.8rem">
-          <Text color="rgb(250, 98, 47)">{dummyData.Discount * 100 + "%"}</Text>
+          <Text color="rgb(250, 98, 47)">{product.Discount * 100 + "%"}</Text>
           <Text>
-            {(dummyData.Price * (1 - dummyData.Discount)).toLocaleString("kr") +
+            {(product.Price * (1 - product.Discount)).toLocaleString("kr") +
               "원"}
           </Text>
         </Flex>
         <Text color="rgb(181, 181, 181)" textDecoration="line-through">
-          {dummyData.Price.toLocaleString("kr") + "원"}
+          {product.Price.toLocaleString("kr") + "원"}
         </Text>
       </Flex>
       {/* 구매 정보 표시 */}
